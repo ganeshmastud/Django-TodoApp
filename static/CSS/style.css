@@ -1,0 +1,29 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    font-family: SansSerif;
+    font-size: 15px;
+
+
+}
+
+.nav{
+    background: lightslategray;
+    color: white;
+    padding: 15px;
+
+}
+
+.listoftodos{
+    font-family: Arial;
+    padding-top: 10px;
+    text-align : center;
+
+}
+
+.form{
+    text-align: center;
+}
+.form2{
+    padding-top: 30px`;
+}

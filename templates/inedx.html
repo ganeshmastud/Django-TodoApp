@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoApp</title>
+    {% block title %}
+
+{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">#}
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %} ">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+<div class="nav" style="text-align: center">
+
+        <pre ><h1 style="text-align: center" >Todo list</h1></pre>
+
+</div>
+<section style="padding-top: 50px">
+    {% if not todos %}
+        <pre>
+        <h1 style="text-align: center">No Todos found!</h1>
+        </pre>
+    {% endif %}
+
+</section>
+    <div class="form">
+    <section>
+
+        <form action="{% url 'index' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="todo"/>
+            <input name="submit" type="submit" value="submit"/>
+
+        </form>
+    </section>
+</div>
+<div class="listoftodos">
+    <section>
+
+        <h2>Your Todos</h2>
+            {% for todo in todos %}
+                <form action="{% url 'delete' todo.id %}" method="post">
+                 {% csrf_token %}
+                        <li>{{ todo.todo }} | {{ todo.is_complete }} | {{ todo.datePublished }}</li>
+                <br/>
+                        <input type="submit" value="delete" name="delete">
+                        <input type="submit" value="complete" name="complete">
+                         <input type="submit" value="update" name="update">
+                <br/>
+                <br/>
+
+
+
+           </form>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+</section>
+</div>
+
+{% endblock %}
+</body>
+</html>

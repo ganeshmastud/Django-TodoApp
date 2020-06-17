@@ -1,0 +1,12 @@
+{% extends 'inedx.html' %}
+{% load static %}
+{% block content %}
+    <div class="form2" style="text-align: center">
+    <form action="{% url 'update' todo_id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="todo">
+    <input type="submit" value="update" name="update">
+    </form>
+    </div>
+
+{% endblock %}
